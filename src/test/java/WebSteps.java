@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+
 public class WebSteps {
 
     @Step("Открываем главную страницу")
@@ -13,15 +14,15 @@ public class WebSteps {
         open("https://github.com");
     }
 
-    @Step("Ищем репозиторий {repository}")
-    public void searchForRepository(String repository) {
+    @Step("Ищем репозиторий {REPOSITORY}")
+    public void searchForRepository(String REPOSITORY) {
         $(".search-input-container").click();
-        $("#query-builder-test").setValue(repository).pressEnter();
+        $("#query-builder-test").setValue(REPOSITORY).pressEnter();
     }
 
-    @Step("Кликаем по ссылке репозитория {repository}")
-    public void clickOnRepositoryLink(String repository) {
-        $(By.linkText(repository)).click();
+    @Step("Кликаем по ссылке репозитория {REPOSITORY}")
+    public void clickOnRepositoryLink(String REPOSITORY) {
+        $(By.linkText(REPOSITORY)).click();
     }
 
     @Step("Открываем таб Issues")
@@ -29,12 +30,8 @@ public class WebSteps {
         $("#issues-tab").click();
     }
 
-    @Step("Проверяем наличие Issue с номером {issue}")
-    public void shouldSeeIssueWithNumber (int issue) {
-        $(withText("#" + issue)).should(Condition.exist);
+    @Step("Проверяем наличие Issue с номером {ISSUE}")
+    public void shouldSeeIssueWithNumber (int ISSUE) {
+        $(withText("#" + ISSUE)).should(Condition.exist);
     }
-
-
-
-
 }

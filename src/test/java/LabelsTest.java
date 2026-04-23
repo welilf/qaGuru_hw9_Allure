@@ -9,12 +9,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+
 public class LabelsTest {
 
-public final String repository =  "welilf/qaGuru_hw9_Allure";
-public final int issue = 1;
-
-
+public static final String REPOSITORY =  "welilf/qaGuru_hw9_Allure";
+public static final int ISSUE = 1;
 
     @Test
     public void cleanSelenide() {
@@ -22,10 +21,10 @@ public final int issue = 1;
 
         open("https://github.com");
         $(".search-input-container").click();
-        $("#query-builder-test").setValue(repository).pressEnter();
-        $(By.linkText(repository)).click();
+        $("#query-builder-test").setValue(REPOSITORY).pressEnter();
+        $(By.linkText(REPOSITORY)).click();
         $("#issues-tab").click();
-        $(withText("#" + issue)).should(Condition.exist);
+        $(withText("#" + ISSUE)).should(Condition.exist);
     }
 
     @Test
@@ -35,18 +34,18 @@ public final int issue = 1;
         step("Открываем главную страницу", () -> {
             open("https://github.com");
         });
-        step("Ищем репозиторий " + repository, () -> {
+        step("Ищем репозиторий " + REPOSITORY, () -> {
             $(".search-input-container").click();
-            $("#query-builder-test").setValue(repository).pressEnter();
+            $("#query-builder-test").setValue(REPOSITORY).pressEnter();
         });
-        step("Кликаем по ссылке репозитория " + repository, () -> {
-            $(By.linkText(repository)).click();
+        step("Кликаем по ссылке репозитория " + REPOSITORY, () -> {
+            $(By.linkText(REPOSITORY)).click();
         });
         step("Открываем таб Issues", () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем наличие Issue с номером " + issue, () -> {
-            $(withText("#" + issue)).should(Condition.exist);
+        step("Проверяем наличие Issue с номером " + ISSUE, () -> {
+            $(withText("#" + ISSUE)).should(Condition.exist);
         });
     }
 
@@ -56,9 +55,9 @@ public final int issue = 1;
         WebSteps steps = new WebSteps();
 
         steps.openMainPage();
-        steps.searchForRepository(repository);
-        steps.clickOnRepositoryLink(repository);
+        steps.searchForRepository(REPOSITORY);
+        steps.clickOnRepositoryLink(REPOSITORY);
         steps.openIssuesTab();
-        steps.shouldSeeIssueWithNumber(issue);
+        steps.shouldSeeIssueWithNumber(ISSUE);
     }
 }
